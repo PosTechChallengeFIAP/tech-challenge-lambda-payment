@@ -1,9 +1,10 @@
 resource "aws_lambda_function" "my_lambda" {
-  filename      = "lambda.zip"
-  function_name = "myLambda"
-  role          = data.aws_iam_role.default.arn
-  handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  function_name    = "payment_lambda"
+  filename         = "lambda.zip"
+  source_code_hash = filebase64sha256("lambda.zip")
+  role             = data.aws_iam_role.default.arn
+  handler          = "dist/index.handler"
+  runtime          = "nodejs18.x"
 
   vpc_config {
     subnet_ids         = [data.terraform_remote_state.network.app_public_subnet_id]
