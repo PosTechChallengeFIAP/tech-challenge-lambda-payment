@@ -18,7 +18,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependences
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
         run: npx tsc
 
       - name: Generate ZIP to Lambda
