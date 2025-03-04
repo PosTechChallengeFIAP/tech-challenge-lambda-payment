@@ -25,7 +25,7 @@ jobs:
         run: npx tsc
 
       - name: Generate ZIP to Lambda
-        run: zip -r lambda.zip dist node_modules package.json
+        run: zip -r ./devops/terraform/lambda.zip dist node_modules package.json
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
