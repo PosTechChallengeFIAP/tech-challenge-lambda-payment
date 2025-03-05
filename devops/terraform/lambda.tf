@@ -16,6 +16,10 @@ resource "aws_lambda_function" "payment_lambda" {
       SQS_URL = aws_sqs_queue.payment_queue.url
     }
   }
+
+  dead_letter_config {
+    arn = aws_sqs_queue.payment_queue_dlq.arn
+  }
 }
 
 resource "aws_lambda_permission" "allow_sqs" {
@@ -31,7 +35,4 @@ resource "aws_lambda_event_source_mapping" "sqs_to_lambda_with_dlq" {
   function_name     = aws_lambda_function.payment_lambda.function_name
   batch_size        = 5
   enabled           = true
-  dead_letter_config {
-    arn = aws_sqs_queue.payment_queue_dlq.arn
-  }
 }
