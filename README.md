@@ -1,1 +1,1 @@
-# tech-challenge-lambdas
+# tech-challenge-lambda-payment
