@@ -18,7 +18,7 @@ resource "aws_lambda_function" "payment_lambda" {
   }
 
   dead_letter_config {
-    arn = aws_sqs_queue.payment_queue_dlq.arn
+    target_arn = aws_sqs_queue.payment_queue_dlq.arn
   }
 }
 
