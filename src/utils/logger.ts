@@ -1,15 +1,12 @@
 import winston from 'winston';
-import WinstonCloudWatch from 'winston-cloudwatch';
 
 // Configuração do logger
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(), // Formata os logs como JSON
     transports: [
-        new WinstonCloudWatch({
-            logGroupName: process.env.LOG_GROUP_NAME,
-            logStreamName: process.env.LOG_STREAM_NAME,
-            awsRegion: process.env.AWS_REGION,
+        new winston.transports.Console({
+            format: winston.format.simple(), // Formato simples para console
         }),
     ],
 });

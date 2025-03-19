@@ -16,8 +16,6 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.1692.0",
-    "winston": "^3.17.0",
-    "winston-cloudwatch": "^6.3.0"
+    "winston": "^3.17.0"
   }
 }
