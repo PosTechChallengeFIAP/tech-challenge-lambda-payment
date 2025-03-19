@@ -13,7 +13,10 @@ resource "aws_lambda_function" "payment_lambda" {
 
   environment {
     variables = {
-      SQS_URL = aws_sqs_queue.payment_queue.url
+      SQS_URL         = aws_sqs_queue.payment_queue.url
+      LOG_GROUP_NAME  = aws_cloudwatch_log_group.lambda_log_group.name
+      LOG_STREAM_NAME = "log-stream-${aws_lambda_function.meu_lambda.function_name}"
+      AWS_REGION      = "us-east-2"
     }
   }
 
