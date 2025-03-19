@@ -15,7 +15,8 @@ export class PaymentController implements IController<TPaymentControllerRequest>
 
     public async execute(body: TPaymentControllerRequest) {
         Logger.info('PaymentController.payment', 'start', body);
-
+        await this.paymentUseCase.execute(body);
+        Logger.info('PaymentController.payment', 'end');
         return {
             statusCode: 200,
             body: JSON.stringify({
