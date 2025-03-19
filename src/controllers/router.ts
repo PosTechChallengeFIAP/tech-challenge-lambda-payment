@@ -27,6 +27,6 @@ export class Router {
                 }),
             };
         }
-        return handler(body);
+        return await handler(body);
     }
 }
