@@ -11,9 +11,6 @@ enum EPaymentRoutes {
 
 export class PaymentLambda {
     static async handler(event: SQSEvent, _: Context) {
-        const output = execSync("curl -I https://google.com").toString();
-        Logger.info('PaymentLambda.handler', 'test google', output);
-
         Logger.info('PaymentLambda.handler', 'start', event);
         
         const record = event.Records[0];
