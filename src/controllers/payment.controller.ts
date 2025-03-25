@@ -1,5 +1,4 @@
-import { IPaymentUseCase, PaymentUseCase } from "../usecase/payment/payment.usecase";
-import { Logger } from "../utils/logger";
+import { IPaymentUseCase } from "../usecase/payment/payment.usecase";
 import { IController } from "./controller";
 
 type TPaymentControllerRequest = {
@@ -14,9 +13,7 @@ export class PaymentController implements IController<TPaymentControllerRequest>
     ) {}
 
     public async execute(body: TPaymentControllerRequest) {
-        Logger.info('PaymentController.payment', 'start', body);
         await this.paymentUseCase.execute(body);
-        Logger.info('PaymentController.payment', 'end');
         return {
             statusCode: 200,
             body: JSON.stringify({

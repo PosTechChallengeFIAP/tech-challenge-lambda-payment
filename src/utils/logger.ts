@@ -1,6 +1,5 @@
 import winston from 'winston';
 
-// Configuração do logger
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(), // Formata os logs como JSON

@@ -12,7 +12,6 @@ export class PaymentUseCase implements IPaymentUseCase {
         const { orderId, paymentId, status } = request
         
         const url = process.env.TC_API_URL + `/order/${orderId}/payment/${paymentId}`;
-        Logger.info('PaymentUseCase.execute', 'test', url);
 
         try {
             const response = await axios.get(url, {
@@ -25,7 +24,5 @@ export class PaymentUseCase implements IPaymentUseCase {
             Logger.error('PaymentUseCase.execute', 'error', error);
             throw error;
         }
-
-        Logger.info('PaymentUseCase.execute', 'end');
     }
 }
