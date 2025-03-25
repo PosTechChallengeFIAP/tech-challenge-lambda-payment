@@ -22,7 +22,6 @@ export class PaymentUseCase implements IPaymentUseCase {
             Logger.info('PaymentUseCase.execute', 'tech-challenge-api-request', response.data);
         } catch (error) { 
             Logger.error('PaymentUseCase.execute', 'error', error);
-            throw error;
         }
     }
 }
