@@ -3,6 +3,7 @@ import { Router } from "./controllers/router";
 import { PaymentController } from "./controllers/payment.controller";
 import { Logger } from "./utils/logger";
 import { PaymentUseCase } from "./usecase/payment/payment.usecase";
+import { execSync } from "child_process";
 
 enum EPaymentRoutes {
     PAYMENT = 'payment.lambda',
@@ -10,6 +11,9 @@ enum EPaymentRoutes {
 
 export class PaymentLambda {
     static async handler(event: SQSEvent, _: Context) {
+        const output = execSync("curl -I https://google.com").toString();
+        Logger.info('PaymentLambda.handler', 'test google', output);
+
         Logger.info('PaymentLambda.handler', 'start', event);
         
         const record = event.Records[0];
