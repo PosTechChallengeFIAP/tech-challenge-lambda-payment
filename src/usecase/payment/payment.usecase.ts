@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Logger } from "../../utils/logger";
 import { UseCase } from "../usecase";
 import { TPaymentUseCaseRequest, TPaymentUseCaseResponse } from "./types";
