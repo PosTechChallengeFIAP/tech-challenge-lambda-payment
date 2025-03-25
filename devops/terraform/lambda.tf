@@ -7,13 +7,14 @@ resource "aws_lambda_function" "payment_lambda" {
   runtime          = "nodejs18.x"
 
   vpc_config {
-    subnet_ids         = [data.terraform_remote_state.network.outputs.lambda_private_subnet_id]
+    subnet_ids         = [data.terraform_remote_state.network.outputs.lambda_public_subnet_id]
     security_group_ids = [data.terraform_remote_state.network.outputs.lambda_sg_id]
   }
 
   environment {
     variables = {
       SQS_URL         = aws_sqs_queue.payment_queue.url
+      TC_API_URL      = data.terraform_remote_state.api.outputs.ecs_api_gateway_url
     }
   }
 
