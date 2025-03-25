@@ -14,6 +14,7 @@ export class PaymentUseCase implements IPaymentUseCase {
         const url = process.env.TC_API_URL + `/order/${orderId}/payment/${paymentId}`;
 
         try {
+            Logger.info('PaymentUseCase.execute', 'start-tech-challenge-api-request', url);
             const response = await axios.get(url, {
                 params: {
                     status
@@ -21,7 +22,7 @@ export class PaymentUseCase implements IPaymentUseCase {
             });
             Logger.info('PaymentUseCase.execute', 'tech-challenge-api-request', response.data);
         } catch (error) { 
-            Logger.error('PaymentUseCase.execute', 'error', error);
+            Logger.error('[ERROR] PaymentUseCase.execute', 'error', error);
         }
     }
 }
