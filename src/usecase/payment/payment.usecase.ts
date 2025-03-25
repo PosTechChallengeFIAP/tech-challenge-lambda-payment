@@ -18,6 +18,10 @@ export class PaymentUseCase implements IPaymentUseCase {
             const response = await axios.get(url, {
                 params: {
                     status
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
                 }
             });
             Logger.info('PaymentUseCase.execute', 'tech-challenge-api-request', response.data);
