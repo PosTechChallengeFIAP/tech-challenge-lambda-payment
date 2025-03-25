@@ -6,6 +6,7 @@ export interface IPaymentUseCase extends UseCase<TPaymentUseCaseRequest, TPaymen
 
 export class PaymentUseCase implements IPaymentUseCase {
     public async execute(request: TPaymentUseCaseRequest): Promise<TPaymentUseCaseResponse> {
+        Logger.info('PaymentUseCase.execute', 'test', process.env.TC_API_URL);
         Logger.info('PaymentUseCase.execute', 'start', request);
     }
 }
