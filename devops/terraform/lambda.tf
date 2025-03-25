@@ -7,8 +7,8 @@ resource "aws_lambda_function" "payment_lambda" {
   runtime          = "nodejs18.x"
 
   vpc_config {
-    subnet_ids         = [data.terraform_remote_state.network.outputs.lambda_public_subnet_id]
-    security_group_ids = [data.terraform_remote_state.network.outputs.lambda_sg_id]
+    subnet_ids         = [data.terraform_remote_state.network.outputs.api_public_subnet_id]
+    security_group_ids = [data.terraform_remote_state.network.outputs.api_sg_id]
   }
 
   environment {
