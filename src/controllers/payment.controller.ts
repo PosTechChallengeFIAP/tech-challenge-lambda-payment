@@ -10,7 +10,7 @@ type TPaymentControllerRequest = {
 
 export class PaymentController implements IController<TPaymentControllerRequest> {
     constructor(
-        private readonly paymentUseCase: IPaymentUseCase = new PaymentUseCase(),
+        private readonly paymentUseCase: IPaymentUseCase
     ) {}
 
     public async execute(body: TPaymentControllerRequest) {

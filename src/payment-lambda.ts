@@ -2,6 +2,7 @@ import { Context, SQSEvent } from "aws-lambda";
 import { Router } from "./controllers/router";
 import { PaymentController } from "./controllers/payment.controller";
 import { Logger } from "./utils/logger";
+import { PaymentUseCase } from "./usecase/payment/payment.usecase";
 
 enum EPaymentRoutes {
     PAYMENT = 'payment.lambda',
@@ -15,10 +16,11 @@ export class PaymentLambda {
         const body = JSON.parse(record.body);
         const { type, data } = body;
 
-        const paymentController = new PaymentController();
+        const paymentUseCase = new PaymentUseCase();
+        const paymentController = new PaymentController(paymentUseCase);
 
         const router = new Router();
-        router.use(EPaymentRoutes.PAYMENT,paymentController.execute);
+        router.use(EPaymentRoutes.PAYMENT,paymentController.execute.bind(paymentController));
 
         const response = await router.execute(type, data);
         Logger.info('PaymentLambda.handler', 'end', response);
